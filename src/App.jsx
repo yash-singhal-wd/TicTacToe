@@ -1,7 +1,15 @@
+import Player from "./comps/Player"
 
 function App() {
   return (
-    <h1>Tic-Tac-Toe</h1>
+    <main>
+      <div id="game-container">
+        <ol id="players">
+          <Player name="Yash" symbol="X" />
+          <Player name="Singhal" symbol="O" />
+        </ol>
+      </div>
+    </main>
   )
 }
 

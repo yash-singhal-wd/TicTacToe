@@ -1,17 +1,31 @@
 import { useState } from "react";
 
 export default function Player({name, symbol}){
+    //state definition and state changing
+    const [userName, setUserName] = useState(name);
     const [isEditing, setIsEditing] = useState(false);
-    function onEditClick(){
-        setIsEditing(!isEditing);
+    function handleEditClick(){
+        setIsEditing((editing) => !editing);
     }
+    function handleChange(e){
+        setUserName(e.target.value);
+    }
+    // conditional content
+    let playerNameHTML = (<span className="player-name">{userName}</span>)
+    let btnCaption = "Edit";
+    if(isEditing){
+        playerNameHTML = <input value={userName} onChange={handleChange}/>
+        btnCaption="Save" 
+    }
+
+
     return (
         <li>
             <span className="player">
-               {isEditing ? (<input></input>) : (<span className="player-name">{name}</span>)}
+               {playerNameHTML}
                 <span className="player-symbol">{symbol}</span>
             </span>
-            <button onClick={onEditClick}>Edit</button>
+            <button onClick={handleEditClick}>{btnCaption}</button>
         </li>
     );
 }

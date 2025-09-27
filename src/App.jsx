@@ -20,8 +20,8 @@ function App() {
     <main>
       <div id="game-container">
         <ol id="players" className="highlight-player">
-          <Player name="Yash" symbol="X" isActive={isXActive}/>
-          <Player name="Singhal" symbol="O" isActive={isYActive}/>
+          <Player name="Player 1" symbol="X" isActive={isXActive}/>
+          <Player name="Player 2" symbol="O" isActive={isYActive}/>
         </ol>
         <GameBoard handleSelectSquare={handleSquareClick} activePlayerSymbol={activePlayer}/>
       </div>

@@ -6,16 +6,17 @@ const initialGameBoard = [
     [null, null, null]
 ]
 
-export default function GameBoard() {
+export default function GameBoard({ handleSelectSquare, activePlayerSymbol }) {
     //state definition and state changing
     const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
     function handleSquareClick(i, j){
         setGameBoard( (prevBoard) => {
             const newBoard = [...prevBoard].map(row => [...row]);
-            newBoard[i][j] = 'X';
+            newBoard[i][j] = activePlayerSymbol;
             return newBoard;
         });
+        handleSelectSquare();
     }
     //conditional content
     return (

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { WINNING_COMBINATIONS } from "./winning-combinations";
 
 const initialGameBoard = [
     [null, null, null],
@@ -6,18 +7,15 @@ const initialGameBoard = [
     [null, null, null]
 ]
 
-export default function GameBoard({ handleSelectSquare, activePlayerSymbol }) {
-    //state definition and state changing
-    const [gameBoard, setGameBoard] = useState(initialGameBoard);
-
-    function handleSquareClick(i, j){
-        setGameBoard( (prevBoard) => {
-            const newBoard = [...prevBoard].map(row => [...row]);
-            newBoard[i][j] = activePlayerSymbol;
-            return newBoard;
-        });
-        handleSelectSquare();
+export default function GameBoard({ handleSelectSquare, currentState }) {
+    //derived state 
+    let gameBoard = initialGameBoard;
+    if(currentState.length > 0){
+        const {rowi, coli, player} = currentState[0];
+        gameBoard[rowi][coli] = player;
+        console.log(JSON.stringify(gameBoard));
     }
+    //state definition and state changing
     //conditional content
     return (
         <ol id="game-board">
@@ -26,7 +24,7 @@ export default function GameBoard({ handleSelectSquare, activePlayerSymbol }) {
                     <ol>
                         {row.map( (playerSymbol, i) => (
                             <li key={i}>
-                                <button onClick={() => handleSquareClick(rowi, i)}>{playerSymbol}</button>
+                                <button disabled={playerSymbol ? true: false} onClick={() => handleSelectSquare(rowi, i)}>{playerSymbol}</button>
                             </li>
                         ))}
                     </ol>

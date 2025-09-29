@@ -2,9 +2,10 @@ import { useState } from "react";
 
 import Player from "./comps/Player"
 import GameBoard from "./comps/GameBoard"
+import Logs from "./comps/Logs";
 
 function App() {
-  //state definition and state changing
+  //state definition and state changing functions
   const [activePlayer, setActivePlayer] = useState('X');
   const [gameState, setGameState] = useState([]);
   function handleSquareClick(rowi, coli) {
@@ -32,6 +33,7 @@ function App() {
         </ol>
         <GameBoard handleSelectSquare={handleSquareClick} currentState={gameState}/>
       </div>
+      <Logs gameState={gameState}/>
     </main>
   )
 }

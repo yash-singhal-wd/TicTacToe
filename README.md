@@ -9,7 +9,6 @@ A modern Tic Tac Toe game built with **React**, demonstrating state management, 
 - [Project Overview](#project-overview)  
 - [Features](#features)  
 - [Tech Stack](#tech-stack)  
-- [Project Structure](#project-structure)  
 - [Installation](#installation)  
 - [Usage](#usage)  
 - [Game Logic](#game-logic)  
@@ -57,13 +56,3 @@ Optional:
 
 ---
 
-## Core Project Structure
-
-src/
-├─ comps/
-│  ├─ Player.jsx
-│  ├─ GameBoard.jsx
-│  ├─ Logs.jsx
-│  ├─ GameOver.jsx
-│  └─ winning-combinations.js
-└─ App.jsx

@@ -12,10 +12,6 @@ A modern Tic Tac Toe game built with **React**, demonstrating state management, 
 - [Installation](#installation)  
 - [Usage](#usage)  
 - [Game Logic](#game-logic)  
-- [State Management](#state-management)  
-- [Component Breakdown](#component-breakdown)  
-- [Contributing](#contributing)  
-- [License](#license)
 
 ---
 
@@ -61,7 +57,30 @@ Optional:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/tic-tac-toe-react.git
+git clone <this repo>
 cd tic-tac-toe-react
+npm i
+npm run dev
+```
+
+# Game Logic
+
+- The board is a 3×3 grid represented as a 2D array.  
+- Players alternate turns (X first, then O).  
+- **Winning combinations** are defined in `winning-combinations.js`:
+
+```javascript
+export const WINNING_COMBINATIONS = [
+  [{row:0,col:0},{row:0,col:1},{row:0,col:2}],
+  [{row:1,col:0},{row:1,col:1},{row:1,col:2}],
+  [{row:2,col:0},{row:2,col:1},{row:2,col:2}],
+  [{row:0,col:0},{row:1,col:0},{row:2,col:0}],
+  [{row:0,col:1},{row:1,col:1},{row:2,col:1}],
+  [{row:0,col:2},{row:1,col:2},{row:2,col:2}],
+  [{row:0,col:0},{row:1,col:1},{row:2,col:2}],
+  [{row:0,col:2},{row:1,col:1},{row:2,col:0}],
+];
+```
+
 
 

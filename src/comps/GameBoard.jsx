@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { WINNING_COMBINATIONS } from "./winning-combinations";
-
 export default function GameBoard({ handleSelectSquare, gameBoard }) {
     //state definition and state changing
     //derived state 

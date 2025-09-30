@@ -10,7 +10,6 @@ A modern Tic Tac Toe game built with **React**, demonstrating state management, 
 - [Features](#features)  
 - [Tech Stack](#tech-stack)  
 - [Installation](#installation)  
-- [Usage](#usage)  
 - [Game Logic](#game-logic)  
 
 ---

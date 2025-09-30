@@ -27,11 +27,15 @@ function App() {
       ]
       return updatedState;
     });
-
   }
-
+  function handleMatchReset(){
+    console.log("pols aa gayi pols");
+    setGameState([]);
+    setActivePlayer('X');
+  }
   //derived state related stuff 
-  let gameBoard = initialGameBoard;
+  let gameBoard = [...initialGameBoard.map(innerArray => [...innerArray])];
+  // let gameBoard = initialGameBoard;
   for(const turn of gameState){
       const {rowi, coli, player} = turn;
       gameBoard[rowi][coli] = player;
@@ -50,6 +54,9 @@ function App() {
     }
   }
 
+  let isDrawn = gameState.length == 9 && (!winner);
+  console.log("isDrawn: ", isDrawn);
+
   //conditional content
   const isXActive = activePlayer === 'X' ? true : false;
   const isYActive = activePlayer === 'O' ? true : false;
@@ -61,7 +68,7 @@ function App() {
           <Player name="Player 1" symbol="X" isActive={isXActive}/>
           <Player name="Player 2" symbol="O" isActive={isYActive}/>
         </ol>
-        {winner && <GameOver winner={winner}/>}
+        {(winner || isDrawn) && <GameOver winner={winner} onMatchReset={handleMatchReset} />}
         <GameBoard handleSelectSquare={handleSquareClick} gameBoard={gameBoard}/>
       </div>
       <Logs gameState={gameState}/>

@@ -4,6 +4,13 @@ import Player from "./comps/Player"
 import GameBoard from "./comps/GameBoard"
 import Logs from "./comps/Logs";
 
+
+const initialGameBoard = [
+  [null, null, null],
+  [null, null, null],
+  [null, null, null]
+];
+
 function App() {
   //state definition and state changing functions
   const [activePlayer, setActivePlayer] = useState('X');
@@ -20,6 +27,15 @@ function App() {
       return updatedState;
     });
   }
+
+  //derived state related stuff 
+  let gameBoard = initialGameBoard;
+  for(const turn of gameState){
+      const {rowi, coli, player} = turn;
+      gameBoard[rowi][coli] = player;
+      console.log(JSON.stringify(gameBoard));
+  }
+
   //conditional content
   const isXActive = activePlayer === 'X' ? true : false;
   const isYActive = activePlayer === 'O' ? true : false;
@@ -31,7 +47,7 @@ function App() {
           <Player name="Player 1" symbol="X" isActive={isXActive}/>
           <Player name="Player 2" symbol="O" isActive={isYActive}/>
         </ol>
-        <GameBoard handleSelectSquare={handleSquareClick} currentState={gameState}/>
+        <GameBoard handleSelectSquare={handleSquareClick} gameBoard={gameBoard}/>
       </div>
       <Logs gameState={gameState}/>
     </main>

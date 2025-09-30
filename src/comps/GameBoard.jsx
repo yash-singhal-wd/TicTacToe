@@ -1,21 +1,9 @@
 import { useState } from "react";
 import { WINNING_COMBINATIONS } from "./winning-combinations";
 
-const initialGameBoard = [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null]
-]
-
-export default function GameBoard({ handleSelectSquare, currentState }) {
-    //derived state 
-    let gameBoard = initialGameBoard;
-    if(currentState.length > 0){
-        const {rowi, coli, player} = currentState[0];
-        gameBoard[rowi][coli] = player;
-        console.log(JSON.stringify(gameBoard));
-    }
+export default function GameBoard({ handleSelectSquare, gameBoard }) {
     //state definition and state changing
+    //derived state 
     //conditional content
     return (
         <ol id="game-board">

@@ -14,13 +14,11 @@ const initialGameBoard = [
 
 function App() {
   //state definition and state changing functions
-  const [activePlayer, setActivePlayer] = useState('X');
   const [gameState, setGameState] = useState([]);
   function handleSquareClick(rowi, coli) {
-    setActivePlayer((currentPlayer) => currentPlayer=='X' ? 'O': 'X');
     setGameState( (prevState) => {
-      let currentPlayer = 'X';
-      if(prevState.length > 0 && prevState[0].player=='X') currentPlayer='O';
+      const currentPlayer = gameState.length % 2 === 0 ? "X" : "O";
+
       const updatedState = [
         { coli: coli, rowi: rowi, player: currentPlayer}
         , ...prevState
@@ -35,7 +33,6 @@ function App() {
   }
   //derived state related stuff 
   let gameBoard = [...initialGameBoard.map(innerArray => [...innerArray])];
-  // let gameBoard = initialGameBoard;
   for(const turn of gameState){
       const {rowi, coli, player} = turn;
       gameBoard[rowi][coli] = player;
@@ -57,7 +54,9 @@ function App() {
   let isDrawn = gameState.length == 9 && (!winner);
   console.log("isDrawn: ", isDrawn);
 
+  const activePlayer = gameState.length % 2 === 0 ? "X" : "O";
   //conditional content
+
   const isXActive = activePlayer === 'X' ? true : false;
   const isYActive = activePlayer === 'O' ? true : false;
 

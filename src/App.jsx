@@ -6,7 +6,7 @@ import Logs from "./comps/Logs";
 import { WINNING_COMBINATIONS } from "./comps/winning-combinations";
 import GameOver from "./comps/GameOver";
 
-const initialGameBoard = [
+const INITIAL_GAMEBOARD = [
   [null, null, null],
   [null, null, null],
   [null, null, null]
@@ -27,16 +27,13 @@ function App() {
     });
   }
   function handleMatchReset(){
-    console.log("pols aa gayi pols");
     setGameState([]);
-    setActivePlayer('X');
   }
   //derived state related stuff 
-  let gameBoard = [...initialGameBoard.map(innerArray => [...innerArray])];
+  let gameBoard = [...INITIAL_GAMEBOARD.map(innerArray => [...innerArray])];
   for(const turn of gameState){
       const {rowi, coli, player} = turn;
       gameBoard[rowi][coli] = player;
-      console.log(JSON.stringify(gameBoard));
   }
 
   let winner=null;
@@ -47,12 +44,10 @@ function App() {
 
     if(firstSymbol && firstSymbol==secondSymbol && secondSymbol==thirdSymbol){
       winner = firstSymbol;
-      console.log("Winner is here: ", firstSymbol);
     }
   }
 
   let isDrawn = gameState.length == 9 && (!winner);
-  console.log("isDrawn: ", isDrawn);
 
   const activePlayer = gameState.length % 2 === 0 ? "X" : "O";
   //conditional content

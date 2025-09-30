@@ -1,5 +1,4 @@
 export default function Logs({gameState}) {
-    console.log("in Logs: ",JSON.stringify(gameState));
     return (
         <ol id="log">
             {gameState.map((turn, i) => 

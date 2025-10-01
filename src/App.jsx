@@ -12,13 +12,26 @@ const INITIAL_GAMEBOARD = [
   [null, null, null]
 ];
 
+function deriveWinner(gameBoard){
+  let winner=null;
+  for(const combo of WINNING_COMBINATIONS){
+    const firstSymbol = gameBoard[combo[0].row][combo[0].column];
+    const secondSymbol = gameBoard[combo[1].row][combo[1].column];
+    const thirdSymbol = gameBoard[combo[2].row][combo[2].column];
+
+    if(firstSymbol && firstSymbol==secondSymbol && secondSymbol==thirdSymbol){
+      winner = firstSymbol;
+    }
+  }
+  return winner;
+}
+
 function App() {
   //state definition and state changing functions
   const [gameState, setGameState] = useState([]);
   function handleSquareClick(rowi, coli) {
     setGameState( (prevState) => {
       const currentPlayer = gameState.length % 2 === 0 ? "X" : "O";
-
       const updatedState = [
         { coli: coli, rowi: rowi, player: currentPlayer}
         , ...prevState
@@ -36,19 +49,8 @@ function App() {
       gameBoard[rowi][coli] = player;
   }
 
-  let winner=null;
-  for(const combo of WINNING_COMBINATIONS){
-    const firstSymbol = gameBoard[combo[0].row][combo[0].column];
-    const secondSymbol = gameBoard[combo[1].row][combo[1].column];
-    const thirdSymbol = gameBoard[combo[2].row][combo[2].column];
-
-    if(firstSymbol && firstSymbol==secondSymbol && secondSymbol==thirdSymbol){
-      winner = firstSymbol;
-    }
-  }
-
+  let winner=deriveWinner(gameBoard);
   let isDrawn = gameState.length == 9 && (!winner);
-
   const activePlayer = gameState.length % 2 === 0 ? "X" : "O";
   //conditional content
 

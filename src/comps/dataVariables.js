@@ -40,3 +40,9 @@ export const WINNING_COMBINATIONS = [
     { row: 2, column: 0 },
   ],
 ];
+
+export const INITIAL_GAMEBOARD = [
+  [null, null, null],
+  [null, null, null],
+  [null, null, null]
+];

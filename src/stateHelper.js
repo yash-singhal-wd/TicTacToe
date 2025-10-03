@@ -1,4 +1,5 @@
-import { WINNING_COMBINATIONS } from "./comps/winning-combinations";
+import { WINNING_COMBINATIONS, INITIAL_GAMEBOARD } from "./comps/dataVariables";
+
 
 export function deriveWinner(gameBoard){
   let winner=null;

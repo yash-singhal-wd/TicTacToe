@@ -8,8 +8,6 @@ import Logs from "./comps/Logs";
 import GameOver from "./comps/GameOver";
 
 //import static data
-import { WINNING_COMBINATIONS } from "./comps/dataVariables";
-
 // import stateHelper functions
 import { deriveGameBoard, deriveWinner } from "./stateHelper"; 
 
@@ -34,8 +32,8 @@ function App() {
   const winner=deriveWinner(gameBoard);
   const isDrawn = gameState.length == 9 && (!winner);
   const activePlayer = gameState.length % 2 === 0 ? "X" : "O";
+  
   //conditional content
-
   const isXActive = activePlayer === 'X' ? true : false;
   const isYActive = activePlayer === 'O' ? true : false;
 

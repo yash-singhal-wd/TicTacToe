@@ -52,7 +52,6 @@ function App() {
   }
   //derived state related stuff 
   
-  const;
   const winner=deriveWinner(gameBoard);
   const isDrawn = gameState.length == 9 && (!winner);
   const activePlayer = gameState.length % 2 === 0 ? "X" : "O";

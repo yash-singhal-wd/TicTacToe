@@ -32,6 +32,7 @@ function deriveGameBoard(gameState){
       const {rowi, coli, player} = turn;
       gameBoard[rowi][coli] = player;
   }
+  return gameBoard;
 }
 
 function App() {
@@ -51,7 +52,12 @@ function App() {
     setGameState([]);
   }
   //derived state related stuff 
-  
+  // let gameBoard = [...INITIAL_GAMEBOARD.map(innerArray => [...innerArray])];
+  // for(const turn of gameState){
+  //     const {rowi, coli, player} = turn;
+  //     gameBoard[rowi][coli] = player;
+  // }
+  const gameBoard = deriveGameBoard(gameState);
   const winner=deriveWinner(gameBoard);
   const isDrawn = gameState.length == 9 && (!winner);
   const activePlayer = gameState.length % 2 === 0 ? "X" : "O";
